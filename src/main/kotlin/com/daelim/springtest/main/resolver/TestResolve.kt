@@ -24,7 +24,6 @@ class PostResolver : GraphQLQueryResolver, GraphQLMutationResolver {
     fun createTest(userId: String): TestDto {
         val test = TestDto(
             id = userId,
-            name = faker.name().name(),
             age = Random().nextInt(100)
         )
         tests.add(test)

@@ -19,7 +19,7 @@ class Controller {
     ): ResponseEntity<TestDto> {
         val faker = Faker(Locale.KOREA)
         val test = TestDto(
-            id = faker.idNumber().toString(),
+            id = faker.name().name(),
             age = testDtoRequest.age
         )
         tests.add(test)
@@ -34,9 +34,9 @@ class Controller {
 
     @GetMapping("/test/{age}")
     fun getTestDto(
-        @PathVariable("age") userId: Int
+        @PathVariable("age") userAge: Int
     ): ResponseEntity<TestDto> {
-        val response = tests.firstOrNull{it.age == userId}
+        val response = tests.firstOrNull{it.age == userAge}
         return ResponseEntity.ok().body(response)
     }
 }
