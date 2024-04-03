@@ -19,9 +19,8 @@ class Controller {
     ): ResponseEntity<TestDto> {
         val faker = Faker(Locale.KOREA)
         val test = TestDto(
-            id = testDtoRequest.id,
-            name = faker.name().name(),
-            age = Random().nextInt(100)
+            id = faker.idNumber().toString(),
+            age = testDtoRequest.age
         )
         tests.add(test)
         return ResponseEntity.ok().body(test)
@@ -33,11 +32,11 @@ class Controller {
         return ResponseEntity.ok().body(response)
     }
 
-    @GetMapping("/test/{id}")
+    @GetMapping("/test/{age}")
     fun getTestDto(
-        @PathVariable("id") userId: String
+        @PathVariable("age") userId: Int
     ): ResponseEntity<TestDto> {
-        val response = tests.firstOrNull{it.id == userId}
+        val response = tests.firstOrNull{it.age == userId}
         return ResponseEntity.ok().body(response)
     }
 }
