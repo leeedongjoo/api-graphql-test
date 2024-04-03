@@ -20,9 +20,7 @@ class Controller {
         val faker = Faker(Locale.KOREA)
         val test = TestDto(
             id = testDtoRequest.id,
-            address = faker.address().fullAddress(),
-            email = faker.internet().emailAddress(),
-            tel = faker.phoneNumber().phoneNumber(),
+            name = faker.name().name(),
             age = Random().nextInt(100)
         )
         tests.add(test)
@@ -44,4 +42,4 @@ class Controller {
     }
 }
 
-// 1234
+// 나이 입력하면 이름을 출력

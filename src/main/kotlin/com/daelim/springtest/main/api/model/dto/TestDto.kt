@@ -2,9 +2,7 @@ package com.daelim.springtest.main.api.model.dto
 
 data class TestDto(
     val id: String,
-    val address: String,
-    val email: String,
-    val tel: String? = null,
+    val name: String,
     val age: Int,
 )
 
